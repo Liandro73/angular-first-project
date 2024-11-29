@@ -1,0 +1,18 @@
+.mb3{
+    margin-left: 200px;
+    margin-right: 200px;
+    margin-top: 15px;
+}
+button{
+    margin-right: 30px;
+    margin-top: 15px;
+    margin-bottom: 15px;
+}
+::placeholder {
+    color: lightgray;
+}
+input{
+    width: 1300px;
+    margin-left: 200px;
+    justify-content: center;
+}

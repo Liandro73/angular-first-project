@@ -4,6 +4,14 @@ This project was generated using [Angular CLI](https://github.com/angular/angula
 
 ## Development server
 
+To install all required dependencies, run:
+
+```bash
+npm install
+```
+
+## Development server
+
 To start a local development server, run:
 
 ```bash
