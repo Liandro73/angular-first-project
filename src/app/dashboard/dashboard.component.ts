@@ -8,7 +8,7 @@ import { CommonModule } from '@angular/common';
   imports: [
     FormsModule,
     CommonModule,
-    HttpClientModule
+    HttpClientModule,
   ],
   templateUrl: './dashboard.component.html',
   styleUrl: './dashboard.component.css'
@@ -18,6 +18,13 @@ export class DashboardComponent {
   UsersArray: any[] = [];
   search: any;
   userId: Number = 0;
+
+  name: string = "";
+  age: Number = 0;
+  id: Number = 0;
+  updated_at: string = "";
+
+  currentUserId = "";
 
   constructor(private http: HttpClient) {
     this.getAllUsers()
@@ -37,7 +44,8 @@ export class DashboardComponent {
     return this.userId;
   }
 
-  getAllUserById() {
+  getAllUserById()
+  {
     this.http.get("http://127.0.0.1:8000/api/user/" + this.userId)
       .subscribe((resultData: any) => {
         this.UsersArray = [resultData];
@@ -49,9 +57,13 @@ export class DashboardComponent {
     
   }
 
-  deleteRecords()
+  deleteRecords(data: any)
   {
-    
+    this.http.delete("http://127.0.0.1:8000/api/users/delete/"+ data.id)
+    .subscribe((resultData: any) => {
+      alert("User deleted successfully");
+      this.getAllUsers();
+    })
   }
 
 }

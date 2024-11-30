@@ -34,7 +34,7 @@
               <td>{{user.updated_at | date:"dd/MM/yyyy HH:mm:ss"}}</td>
               <td>
                 <button id="btn_edit" type="button" class="btn btn-warning" (click)="updateRecords()">Edit</button>
-                <button id="btn_delete" type="button" class="btn btn-danger" (click)="deleteRecords()">Delete</button>
+                <button id="btn_delete" type="button" class="btn btn-danger" (click)="deleteRecords(user)">Delete</button>
               </td>
             </tr>
           </tbody>

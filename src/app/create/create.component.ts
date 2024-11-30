@@ -25,10 +25,7 @@ export class CreateComponent {
   age: Number = 0;
   id: Number = 0;
   created_at: string = "";
-  updated_at: string = "";
-
-  currentUserId = "";
-
+  
   saveRecords() 
   {
     let bodyData = {
