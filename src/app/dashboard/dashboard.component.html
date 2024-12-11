@@ -5,10 +5,10 @@
       </div>
       <form>
         <div>
-          <label id="lbl_search" class="form-label">Search by ID:</label>
-          <input id="input_search" type="number" maxlength="50" [(ngModel)]="userId" (submit)="onFill()" [(ngModel)]="search" [ngModelOptions]="{standalone: true}" placeholder="ex: 7">
-          <button id="btn_search" type="submit" class="btn btn-primary" (click)="getAllUserById()">Search</button>
-          <button id="btn_clear" type="submit" class="btn btn-secondary" (click)="getAllUsers()">Clear</button>
+          <label id="lbl_search" class="form-label">Search:</label>
+          <input id="input_search" type="search" maxlength="50" [(ngModel)]="userId" (submit)="onFill()" [(ngModel)]="search" [ngModelOptions]="{standalone: true}" placeholder="ex: Jonh">
+          <button id="btn_search" type="submit" class="btn btn-primary" (click)="getAllUsersBySearch()">Search</button>
+          <button id="btn_clear" type="submit" class="btn btn-secondary" (click)="getAllUsers()" (click)="onClickClearSearch()">Clear</button>
         </div>
       </form>
       <div>
@@ -33,12 +33,32 @@
               <td>{{user.created_at | date:"dd/MM/yyyy HH:mm:ss"}}</td>
               <td>{{user.updated_at | date:"dd/MM/yyyy HH:mm:ss"}}</td>
               <td>
-                <button id="btn_edit" type="button" class="btn btn-warning" (click)="updateRecords()">Edit</button>
+                <button id="btn_edit" type="button" class="btn btn-warning" (click)="setUpdate(user)">Edit</button>
                 <button id="btn_delete" type="button" class="btn btn-danger" (click)="deleteRecords(user)">Delete</button>
               </td>
             </tr>
           </tbody>
         </table>
+      </div>
+      <div>
+        <form formGroup="userForm" *ngIf="showForm">
+          <div class="mb3">
+            <label for="name" class="form-label">Name</label>
+          </div>
+          <div>            
+            <input id="name" type="text" required maxlength="100" [(ngModel)]="name" [ngModelOptions]="{standalone: true}" placeholder="ex.: Jonh Matters Stwart">
+          </div>
+          <div class="mb3">
+            <label for="name" class="form-label">Age</label>
+          </div>
+          <div>
+            <input id="age" type="number" required [(ngModel)]="age" [ngModelOptions]="{standalone: true}">
+          </div>
+          <div class="mb3">
+            <button id="btnUpdate" type="submit" class="btn btn-warning" (click)="updateRecords()">Update</button>
+            <button id="btnClose" type="submit" class="btn btn-secondary" (click)="onClickCloseEdit()">Close</button>
+          </div>
+      </form>
       </div>
     </div>
 </div>
