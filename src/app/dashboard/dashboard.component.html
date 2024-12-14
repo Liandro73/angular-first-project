@@ -36,6 +36,27 @@
                 <button id="btn_edit" type="button" class="btn btn-warning" (click)="setUpdate(user)">Edit</button>
                 <button id="btn_delete" type="button" class="btn btn-danger" (click)="deleteRecords(user)">Delete</button>
               </td>
+              <td>
+                <table>
+                  <thead>
+                  <tr>
+                    <th scope="col">Address</th>
+                    <th scope="col">City</th>
+                    <th scope="col">State</th>
+                    <th scope="col">Postal Code</th>
+                    <th scope="col">Country</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr *ngFor="let address of user.addresses">
+                  <td>{{ address.address_line_one}} {{address.address_line_two }} </td>
+                  <td>{{ address.city }} </td>
+                  <td>{{ address.state }} </td>
+                  <td>{{ address.postal_code }} </td>
+                  <td>{{ address.country }}</td>
+                  </tr>
+                </tbody>
+                </table>
             </tr>
           </tbody>
         </table>

@@ -18,6 +18,7 @@ export class DashboardComponent {
   showForm: boolean = false;
 
   UsersArray: any[] = [];
+  AddressesArray: any[] = [];
   search: any;
   userId: Number = 0;
 
@@ -37,6 +38,7 @@ export class DashboardComponent {
     this.http.get("http://127.0.0.1:8000/api/users/")
       .subscribe((resultData: any) => {
         this.UsersArray = resultData;
+        console.log(this.UsersArray)
       })
     this.showForm = false;
   }
