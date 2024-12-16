@@ -1,0 +1,62 @@
+<div>
+    <form>
+        <div class="mb3">
+          <label for="user" class="form-label">User ID</label>
+        </div>
+        <div>            
+          <input id="user" type="number" required maxlength="100" [(ngModel)]="user" [ngModelOptions]="{standalone: true}">
+        </div>
+
+        <div class="mb3">
+          <label for="address_line_one" class="form-label">Endereço</label>
+        </div>
+        <div>
+          <input id="address_line_one" type="text" required [(ngModel)]="address_line_one" [ngModelOptions]="{standalone: true}">
+        </div>
+
+        <div class="mb3">
+          <label for="address_line_two" class="form-label">Complemento</label>
+        </div>
+        <div>
+          <input id="address_line_two" type="text" required [(ngModel)]="address_line_two" [ngModelOptions]="{standalone: true}">
+        </div>
+
+        <div class="mb3">
+          <label for="number" class="form-label">Número</label>
+        </div>
+        <div>
+          <input id="number" type="number" required [(ngModel)]="number" [ngModelOptions]="{standalone: true}">
+        </div>
+
+        <div class="mb3">
+          <label for="postal_code" class="form-label">CEP</label>
+        </div>
+        <div>            
+          <input id="postal_code" type="text" required maxlength="100" [(ngModel)]="postal_code" [ngModelOptions]="{standalone: true}">
+        </div>
+        
+        <div class="mb3">
+          <label for="city" class="form-label">Cidade</label>
+        </div>
+        <div>
+          <input id="city" type="text" required [(ngModel)]="city" [ngModelOptions]="{standalone: true}">
+        </div>
+
+        <div class="mb3">
+          <label for="state" class="form-label">Estado</label>
+        </div>
+        <div>
+          <input id="state" type="text" required [(ngModel)]="state" [ngModelOptions]="{standalone: true}">
+        </div>
+        <div class="mb3">
+          <label for="country" class="form-label">País</label>
+        </div>
+        <div>
+          <input id="country" type="text" required [(ngModel)]="country" [ngModelOptions]="{standalone: true}">
+        </div>
+
+        <div class="mb3">
+          <button id="btnSave" type="submit" class="btn btn-primary" (click)="saveRecords()">Save</button>
+        </div>
+    </form>
+</div>
