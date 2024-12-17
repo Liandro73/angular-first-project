@@ -1,61 +1,78 @@
 <div>
-    <form>
-        <div class="mb3">
-          <label for="user" class="form-label">User ID</label>
+    <form class="form">
+        <div>
+          <mat-form-field class="user_id">
+            <mat-label>ID do Usuário</mat-label>
+            <input id="user" matInput placeholder="Ex. 7" required [(ngModel)]="user" [ngModelOptions]="{standalone: true}">
+            @if (stateControl.hasError('required')) {
+              <mat-error>Please fill the User ID</mat-error>
+            }
+          </mat-form-field>
+        <!-- Address 1 -->
+          <mat-form-field class="address_line_one">
+            <mat-label>Endereço</mat-label>
+            <input matInput placeholder="Avenida 1" required [(ngModel)]="address_line_one" [ngModelOptions]="{standalone: true}">
+            @if (stateControl.hasError('required')) {
+              <mat-error>Please fill your Address</mat-error>
+            }
+          </mat-form-field>
         </div>
-        <div>            
-          <input id="user" type="number" required maxlength="100" [(ngModel)]="user" [ngModelOptions]="{standalone: true}">
+        <!-- Address 2 -->
+        <div>
+          <mat-form-field class="address_line_two">
+            <mat-label>Complemento</mat-label>
+            <input matInput placeholder="Rua 0" [(ngModel)]="address_line_two" [ngModelOptions]="{standalone: true}">
+          </mat-form-field>
+        <!-- Number -->
+          <mat-form-field class="number">
+            <mat-label>Número</mat-label>
+            <input matInput placeholder="Ex. 310" required [(ngModel)]="number" [ngModelOptions]="{standalone: true}">
+            @if (stateControl.hasError('required')) {
+              <mat-error>Please fill the Number</mat-error>
+            }
+          </mat-form-field>
+        <!-- Postal Code -->
+          <mat-form-field class="postal_code">
+            <mat-label>CEP</mat-label>
+            <input matInput placeholder="00000-000" required [(ngModel)]="postal_code" [ngModelOptions]="{standalone: true}">
+            @if (stateControl.hasError('required')) {
+              <mat-error>Please fill the Postal Code</mat-error>
+            }
+          </mat-form-field>
         </div>
-
-        <div class="mb3">
-          <label for="address_line_one" class="form-label">Endereço</label>
+        <!-- City -->
+        <div>
+          <mat-form-field class="city">
+            <mat-label>Cidade</mat-label>
+            <input matInput placeholder="Brasília" required [(ngModel)]="city" [ngModelOptions]="{standalone: true}">
+            @if (stateControl.hasError('required')) {
+              <mat-error>Please fill your City</mat-error>
+            }
+          </mat-form-field>
+        <!-- State -->
+          <mat-form-field class="state">
+            <mat-label>Estado</mat-label>
+            <mat-select [formControl]="stateControl" required [(ngModel)]="state" ngModelOptions="{standalone: true}">
+              <mat-option>--</mat-option>
+              @for (state of states; track state) {
+                <mat-option [value]="state.value">{{state.label}}</mat-option>
+              }
+            </mat-select>
+            @if (stateControl.hasError('required')) {
+              <mat-error>Please choose your State</mat-error>
+            }
+            <!-- <mat-hint>{{stateControl.value?.value}}</mat-hint> -->
+          </mat-form-field>
+        <!-- Country -->
+          <mat-form-field class="country">
+            <mat-label>País</mat-label>
+            <input matInput placeholder="Ex. Brasil" required [(ngModel)]="country" [ngModelOptions]="{standalone: true}">
+            @if (stateControl.hasError('required')) {
+              <mat-error>Please fill your Country</mat-error>
+            }
+          </mat-form-field>
         </div>
         <div>
-          <input id="address_line_one" type="text" required [(ngModel)]="address_line_one" [ngModelOptions]="{standalone: true}">
-        </div>
-
-        <div class="mb3">
-          <label for="address_line_two" class="form-label">Complemento</label>
-        </div>
-        <div>
-          <input id="address_line_two" type="text" required [(ngModel)]="address_line_two" [ngModelOptions]="{standalone: true}">
-        </div>
-
-        <div class="mb3">
-          <label for="number" class="form-label">Número</label>
-        </div>
-        <div>
-          <input id="number" type="number" required [(ngModel)]="number" [ngModelOptions]="{standalone: true}">
-        </div>
-
-        <div class="mb3">
-          <label for="postal_code" class="form-label">CEP</label>
-        </div>
-        <div>            
-          <input id="postal_code" type="text" required maxlength="100" [(ngModel)]="postal_code" [ngModelOptions]="{standalone: true}">
-        </div>
-        
-        <div class="mb3">
-          <label for="city" class="form-label">Cidade</label>
-        </div>
-        <div>
-          <input id="city" type="text" required [(ngModel)]="city" [ngModelOptions]="{standalone: true}">
-        </div>
-
-        <div class="mb3">
-          <label for="state" class="form-label">Estado</label>
-        </div>
-        <div>
-          <input id="state" type="text" required [(ngModel)]="state" [ngModelOptions]="{standalone: true}">
-        </div>
-        <div class="mb3">
-          <label for="country" class="form-label">País</label>
-        </div>
-        <div>
-          <input id="country" type="text" required [(ngModel)]="country" [ngModelOptions]="{standalone: true}">
-        </div>
-
-        <div class="mb3">
           <button id="btnSave" type="submit" class="btn btn-primary" (click)="saveRecords()">Save</button>
         </div>
     </form>

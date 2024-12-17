@@ -1,5 +1,5 @@
-import { Component, OnInit } from '@angular/core';
-import { ReactiveFormsModule } from '@angular/forms';
+import { Component, OnInit, ChangeDetectionStrategy, inject, model, signal } from '@angular/core';
+import { FormControl, Validators, ReactiveFormsModule } from '@angular/forms';
 import { MatInputModule } from '@angular/material/input';
 import { MatSelectModule } from '@angular/material/select';
 import { MatButtonModule } from '@angular/material/button';
@@ -14,7 +14,7 @@ import { MatFormFieldModule } from '@angular/material/form-field';
 
 interface State {
   value: string;
-  viewValue: string;
+  label: string;
 }
 
 @Component({
@@ -22,21 +22,16 @@ interface State {
   imports: [
     FormsModule, 
     MatFormFieldModule,
-    MatSelectModule,
-    MatInputModule,
     MatCardModule,
     CommonModule,
     ReactiveFormsModule,
-    MatInputModule,
     MatSelectModule,
     MatButtonModule,
     MatDatepickerModule,
     MatNativeDateModule,
     MatInputModule,
     HttpClientModule,
-    FormsModule,
     MatDialogModule,
-    MatButtonModule
   ],
   templateUrl: './address.component.html',
   styleUrl: './address.component.css'
@@ -49,35 +44,37 @@ export class AddressComponent implements OnInit {
   ngOnInit(): void {
   }
 
+  stateControl = new FormControl<State | null>(null, Validators.required);
+  selectFormControl = new FormControl('', Validators.required);
 
   states: State[] = [
-    {value: 'AC', viewValue: 'Acre'},
-    {value: 'AM', viewValue: 'Amazônia'},
-    {value: 'AP', viewValue: 'Amapa'},
-    {value: 'AL', viewValue: 'Alagoas'},
-    {value: 'BA', viewValue: 'Rondônia'},
-    {value: 'CE', viewValue: 'Rondônia'},
-    {value: 'DF', viewValue: 'Rondônia'},
-    {value: 'ES', viewValue: 'Rondônia'},
-    {value: 'GO', viewValue: 'Rondônia'},
-    {value: 'MA', viewValue: 'Rondônia'},
-    {value: 'MG', viewValue: 'Rondônia'},
-    {value: 'MS', viewValue: 'Rondônia'},
-    {value: 'MT', viewValue: 'Rondônia'},
-    {value: 'PA', viewValue: 'Rondônia'},
-    {value: 'PB', viewValue: 'Rondônia'},
-    {value: 'PE', viewValue: 'Rondônia'},
-    {value: 'PI', viewValue: 'Rondônia'},
-    {value: 'PR', viewValue: 'Rondônia'},
-    {value: 'RJ', viewValue: 'Rondônia'},
-    {value: 'RN', viewValue: 'Rondônia'},
-    {value: 'RO', viewValue: 'Rondônia'},
-    {value: 'RR', viewValue: 'Rondônia'},
-    {value: 'RS', viewValue: 'Rondônia'},
-    {value: 'SC', viewValue: 'Rondônia'},
-    {value: 'SE', viewValue: 'Rondônia'},
-    {value: 'SP', viewValue: 'Rondônia'},
-    {value: 'TO', viewValue: 'Rondônia'}
+    {value: 'AC', label: 'Acre'},
+    {value: 'AM', label: 'Amazônia'},
+    {value: 'AP', label: 'Amapa'},
+    {value: 'AL', label: 'Alagoas'},
+    {value: 'BA', label: 'Bahia'},
+    {value: 'CE', label: 'Ceará'},
+    {value: 'DF', label: 'Distrito Federal'},
+    {value: 'ES', label: 'Espírito Santo'},
+    {value: 'GO', label: 'Goiás'},
+    {value: 'MA', label: 'Maranhão'},
+    {value: 'MG', label: 'Minas Gerais'},
+    {value: 'MS', label: 'Mato Grosso do Sul'},
+    {value: 'MT', label: 'Mato Grosso'},
+    {value: 'PA', label: 'Pará'},
+    {value: 'PB', label: 'Praíba'},
+    {value: 'PE', label: 'Pernambuco'},
+    {value: 'PI', label: 'Piauí'},
+    {value: 'PR', label: 'Paraná'},
+    {value: 'RJ', label: 'Rio de Janeiro'},
+    {value: 'RN', label: 'Rio Grande do Norte'},
+    {value: 'RO', label: 'Rondônia'},
+    {value: 'RR', label: 'Roraima'},
+    {value: 'RS', label: 'Rio Grande do Sul'},
+    {value: 'SC', label: 'Santa Catarina'},
+    {value: 'SE', label: 'Sergipe'},
+    {value: 'SP', label: 'São Paulo'},
+    {value: 'TO', label: 'Tocantins'}
   ]
 
   AddressArray: any[] = [];
@@ -111,3 +108,4 @@ export class AddressComponent implements OnInit {
   }
 
 }
+
