@@ -1,19 +1,25 @@
   <div>
-      <form>
-          <div class="mb3">
-            <label for="name" class="form-label">Name</label>
-          </div>
-          <div>            
-            <input id="name" type="text" required maxlength="100" [(ngModel)]="name" [ngModelOptions]="{standalone: true}" placeholder="ex.: Jonh Matters Stwart">
-          </div>
-          <div class="mb3">
-            <label for="name" class="form-label">Age</label>
-          </div>
-          <div>
-            <input id="age" type="number" required [(ngModel)]="age" [ngModelOptions]="{standalone: true}">
-          </div>
-          <div class="mb3">
-            <button id="btnSave" type="submit" class="btn btn-primary" (click)="saveRecords()">Save</button>
-          </div>
-      </form>
-  </div>
+      <form class="form">
+        <div>
+          <!-- Name -->
+          <mat-form-field class="name">
+            <mat-label>Name</mat-label>
+            <input id="name" matInput placeholder="Ex.: Jonh Matters Stwart" required [(ngModel)]="name" [ngModelOptions]="{standalone: true}">
+            @if (stateControl.hasError('required')) {
+              <mat-error>Please fill the User name</mat-error>
+            }
+          </mat-form-field>
+          <!-- Age --> 
+          <mat-form-field class="age">
+            <mat-label>Age</mat-label>
+            <input id="age" matInput placeholder="Ex. 27" required [(ngModel)]="age" [ngModelOptions]="{standalone: true}">
+            @if (stateControl.hasError('required')) {
+              <mat-error>Please fill the User Age</mat-error>
+            }
+          </mat-form-field>
+        </div>
+        <div class="mb3">
+          <button id="btnSave" type="submit" class="btn btn-primary" (click)="saveRecords()">Save</button>
+        </div>
+    </form>
+</div>
