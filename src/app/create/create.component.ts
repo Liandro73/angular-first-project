@@ -48,7 +48,7 @@ export class CreateComponent {
   id: Number = 0;
   created_at: string = "";
 
-  stateControl = new FormControl<User | null>(null, Validators.required);
+  userControl = new FormControl<User | null>(null, Validators.required);
   
   
   saveRecords() 

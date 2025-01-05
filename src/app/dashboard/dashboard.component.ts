@@ -1,19 +1,43 @@
 import { Component } from '@angular/core';
 import { HttpClient, HttpClientModule } from '@angular/common/http';
-import { FormsModule, FormGroup } from '@angular/forms';
+import { FormsModule, FormGroup, ReactiveFormsModule, FormControl, Validators } from '@angular/forms';
 import { CommonModule } from '@angular/common';
+import { MatDialogModule } from '@angular/material/dialog';
+import { MatInputModule } from '@angular/material/input';
+import { MatNativeDateModule } from '@angular/material/core';
+import { MatDatepickerModule } from '@angular/material/datepicker';
+import { MatButtonModule } from '@angular/material/button';
+import { MatSelectModule } from '@angular/material/select';
+import { MatCardModule } from '@angular/material/card';
+import { MatFormFieldModule } from '@angular/material/form-field';
+
+interface User {
+  value: string;
+  label: string;
+}
 
 @Component({
   selector: 'app-dashboard',
   imports: [
-    FormsModule,
+    FormsModule, 
+    MatFormFieldModule,
+    MatCardModule,
     CommonModule,
+    ReactiveFormsModule,
+    MatSelectModule,
+    MatButtonModule,
+    MatDatepickerModule,
+    MatNativeDateModule,
+    MatInputModule,
     HttpClientModule,
+    MatDialogModule,
   ],
   templateUrl: './dashboard.component.html',
   styleUrl: './dashboard.component.css'
 })
 export class DashboardComponent {
+
+  userControl = new FormControl<User | null>(null, Validators.required);
 
   showForm: boolean = false;
 
@@ -55,8 +79,7 @@ export class DashboardComponent {
 
   onClickCloseEdit()
   {
-    this.name = ''
-    this.age = 0
+    this.showForm = false;
   }
 
   getAllUsersBySearch()

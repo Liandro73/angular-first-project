@@ -5,8 +5,15 @@
       </div>
       <form>
         <div>
-          <label id="lbl_search" class="form-label">Search:</label>
-          <input id="input_search" type="search" maxlength="50" [(ngModel)]="userId" (submit)="onFill()" [(ngModel)]="search" [ngModelOptions]="{standalone: true}" placeholder="ex: Jonh">
+          <!-- Name -->
+          <mat-form-field class="search">
+            <mat-label>Search:</mat-label>
+            <input id="name" matInput placeholder="Ex.: Jonh" (submit)="onFill()" [(ngModel)]="search" [ngModelOptions]="{standalone: true}">
+          </mat-form-field>
+          <!-- <label id="lbl_search" class="form-label">Search:</label> -->
+          <!-- <input id="input_search" type="search" maxlength="50" [(ngModel)]="userId"  [(ngModel)]="search" [ngModelOptions]="{standalone: true}" placeholder="ex: Jonh"> -->
+        </div>
+        <div>
           <button id="btn_search" type="submit" class="btn btn-primary" (click)="getAllUsersBySearch()">Search</button>
           <button id="btn_clear" type="submit" class="btn btn-secondary" (click)="getAllUsers()" (click)="onClickClearSearch()">Clear</button>
         </div>
@@ -64,22 +71,28 @@
         </table>
       </div>
       <div>
-        <form formGroup="userForm" *ngIf="showForm">
-          <div class="mb3">
-            <label for="name" class="form-label">Name</label>
-          </div>
-          <div>            
-            <input id="name" type="text" required maxlength="100" [(ngModel)]="name" [ngModelOptions]="{standalone: true}" placeholder="ex.: Jonh Matters Stwart">
-          </div>
-          <div class="mb3">
-            <label for="name" class="form-label">Age</label>
-          </div>
+        <form class="form" *ngIf="showForm">
           <div>
-            <input id="age" type="number" required [(ngModel)]="age" [ngModelOptions]="{standalone: true}">
+            <!-- Name -->
+            <mat-form-field class="name">
+              <mat-label>Name</mat-label>
+              <input id="name" matInput placeholder="Ex.: Jonh Matters Stwart" required [(ngModel)]="name" [ngModelOptions]="{standalone: true}">
+              <!-- @if (userControl.hasError('required')) {
+                <mat-error>Please fill the User name</mat-error>
+              } -->
+            </mat-form-field>
+            <!-- Age --> 
+            <mat-form-field class="age">
+              <mat-label>Age</mat-label>
+              <input id="age" matInput placeholder="Ex. 27" required [(ngModel)]="age" [ngModelOptions]="{standalone: true}">
+              <!-- @if (userControl.hasError('required')) {
+                <mat-error>Please fill the User Age</mat-error>
+              } -->
+            </mat-form-field>
           </div>
           <div class="mb3">
             <button id="btnUpdate" type="submit" class="btn btn-warning" (click)="updateRecords()">Update</button>
-            <button id="btnClose" type="submit" class="btn btn-secondary" (click)="onClickCloseEdit()">Close</button>
+            <button id="btnClose" class="btn btn-secondary" (click)="onClickCloseEdit()">Close</button>
           </div>
       </form>
       </div>
